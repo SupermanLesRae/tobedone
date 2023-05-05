@@ -1,15 +1,13 @@
 //rrd imports
 import { Outlet, useLoaderData } from "react-router-dom";
 
-//assets
-import wave from "../assets/wave.svg";
-
 //helper functions
 import { fetchData } from "../helpers";
 
 //Components
 import Nav from "../components/Nav";
 import { Data } from "../interfaces/interface";
+import Footer from "../components/Footer";
 
 //Loader function
 export function mainLoader()
@@ -33,7 +31,7 @@ const Main = () => {
                 <Outlet />                
             </main> {/* content END */}
 
-            <img src={wave} alt="" />
+            <Footer />
         
         </div>
      );
