@@ -35,9 +35,14 @@ const Nav = ({ userName }: NavProps) => {
                             }
                         }}
                     >
-                        <SubmitBtn color={"red-500"} title={"Delete User"}>
+                        <button type="submit"
+                            className="flex items-center gap-2 bg-red-500 hover:bg-white text-white hover:text-red-500 font-bold py-2 px-4 rounded-full border-transparent border-2 hover:border-red-500"
+                        >
                             <TrashIcon className="h-4 w-4"></TrashIcon>
-                        </SubmitBtn>
+                            <span>Delete User</span>
+                        </button>
+
+
                     </Form>
                 ) : ''
             }

@@ -4,7 +4,7 @@ import { Form } from "react-router-dom";
 //assets
 import { UserPlusIcon } from '@heroicons/react/24/solid'
 import SubmitBtn from "./SubmitBtn";
-import  illustration  from "../assets/illustration.jpg"
+import illustration from "../assets/illustration.jpg"
 
 const Intro = () => {
     return (
@@ -24,9 +24,14 @@ const Intro = () => {
                         autoComplete="given-name"
                         required />
 
-                    <SubmitBtn color={"fluorescent"} title={"Create account"}>
+                    <button type="submit"
+                        className="flex items-center gap-2 bg-fluorescent hover:bg-white text-white hover:text-fluorescent font-bold py-2 px-4 rounded-full border-transparent border-2 hover:border-fluorescent"
+                    >
                         <UserPlusIcon className="h-4 w-4" />
-                    </SubmitBtn>
+                        <span>Create account</span>
+                    </button>
+
+
 
                 </Form>
             </div>
