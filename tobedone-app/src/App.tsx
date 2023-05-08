@@ -12,6 +12,13 @@ import Error from "./pages/Error";
 //Layouts
 import Main, { mainLoader } from "./layouts/Main";
 
+//actions
+import { logoutAction } from "./actions/logout";
+
+//lib imports
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const router = createBrowserRouter([
   {
@@ -21,10 +28,14 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        index:true,
+        index: true,
         element: <Dashboard />,
         loader: dashboardLoader,
         errorElement: <Error />
+      },
+      {
+        path: "logout",
+        action: logoutAction
       },
     ]
   },
@@ -33,7 +44,10 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <div className="App">
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </div>
   )
 }
 
