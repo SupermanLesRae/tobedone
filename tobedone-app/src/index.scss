@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import "sass/abstracts/variables";
+
+body {
+  background-color: $light-color;
+  color: $dark-color;
+}
+
+a {
+  color: $primary-color;
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+.button {
+  background-color: $success-color;
+  color: $light-color;
+  border: none;
+  &:hover {
+    background-color: darken($success-color, 10%);
+  }
+}
