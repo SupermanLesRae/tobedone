@@ -6,7 +6,7 @@ import {
 
 
 //Routes and loaders
-import Dashboard, { dashboardLoader } from "./pages/Dashboard";
+import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
 
 //Layouts
@@ -31,6 +31,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Dashboard />,
         loader: dashboardLoader,
+        action: dashboardAction,
         errorElement: <Error />
       },
       {
