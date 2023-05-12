@@ -7,8 +7,8 @@ module.exports = {
       'sans': ['Montserrat', 'sans-serif'],
     },
     extend: {
-       colors: {
-        'fluorescent': '#12C9CC',
+     colors: {
+        pacific_blue: '#1dbbc3',
       },
     },
   },

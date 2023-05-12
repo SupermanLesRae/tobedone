@@ -1,11 +1,19 @@
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
-export interface SubmitBtnProps {
-  color: string;
+export interface BtnProps {
+  click?: MouseEventHandler<HTMLButtonElement>;
+  className: string;
+  type: string;
   title: string;
   children: ReactNode
 }
 
+export interface SubmitBtnProps {
+  className: string;
+  type: string;
+  title: string;
+  children: ReactNode
+}
 
 export interface Data {
   userName: string;
@@ -13,4 +21,8 @@ export interface Data {
 
 export interface NavProps {
     userName:string;
+}
+
+export interface CategoryItem {
+    name:string;
 }

@@ -1,0 +1,33 @@
+$button-color: #333;
+$button-background-color: #f8f8f8;
+$button-border-color: #ccc;
+$button-border-radius: 20px;
+
+.btn {
+  display: flex;
+  padding: 0.5rem 1rem;
+  border: 1px solid $button-border-color;
+  border-radius: $button-border-radius;
+  background-color: $button-background-color;
+  color: $button-color;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $button-color;
+    color: $button-background-color;
+    border-color: $button-color;
+    transform: translateY(-1px);
+  }
+}
+
+.primary {
+    background-color: $primary-color;
+    color: $light-color;
+}
+
+.danger {
+    background-color: $danger-color;
+    color: $light-color;
+}

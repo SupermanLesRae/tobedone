@@ -24,12 +24,9 @@ const Intro = () => {
                         autoComplete="given-name"
                         required />
 
-                    <button type="submit"
-                        className="flex items-center gap-2 bg-fluorescent hover:bg-white text-white hover:text-fluorescent font-bold py-2 px-4 rounded-full border-transparent border-2 hover:border-fluorescent"
-                    >
+                    <SubmitBtn type={"primary"} title={"Create account"}>
                         <UserPlusIcon className="h-4 w-4" />
-                        <span>Create account</span>
-                    </button>
+                    </SubmitBtn>
 
 
 

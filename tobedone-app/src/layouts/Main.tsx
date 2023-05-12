@@ -22,9 +22,9 @@ const Main = () => {
     const { userName } = useLoaderData() as Data;
 
     return ( 
-        <div className="absolute w-full h-full flex flex-col justify-between">
+        <div className="absolute w-full h-full top-0 left-0">
 
-            <Nav userName={userName} />
+            <Nav userName={userName} />           
 
             {/* content */}
             <main>                
