@@ -24,7 +24,7 @@ const Intro = () => {
                         autoComplete="given-name"
                         required />
 
-                    <SubmitBtn type={"primary"} title={"Create account"}>
+                    <SubmitBtn type={"primary"} title={"Create account"} className={""}>
                         <UserPlusIcon className="h-4 w-4" />
                     </SubmitBtn>
 

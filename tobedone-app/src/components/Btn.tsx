@@ -10,10 +10,13 @@ const Btn = (props: BtnProps) => {
     return (
         <button
         onClick={click}
-            className={`btn flex ${type} items-center gap-2 py-2 px-6 rounded-full ${className}`}
+            className={`btn flex ${type} items-center gap-2 py-2  px-6 rounded-full ${className}`}
         >
             {children}
-            <span>{title}</span>
+            {
+                title ? <span>{title}</span> : null
+            }
+            
 
         </button>
     );

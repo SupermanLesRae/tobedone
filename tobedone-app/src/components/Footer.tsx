@@ -3,7 +3,7 @@ import wave from "../assets/wave.svg";
 
 const Footer = () => {
     return ( 
-        <div className="absolute bottom-0 w-full">
+        <div className="relative w-full">
             <img src={wave} alt="" />
         </div>
      );
