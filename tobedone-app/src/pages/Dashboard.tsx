@@ -1,14 +1,12 @@
 //react imports
-import { useEffect, useState } from "react";
 
 //rrd imports
 import { useLoaderData } from "react-router-dom";
 
 //helper functions
-import { fetchData } from "../helpers";
+import { createCategory, createUser, fetchData, waaait } from "../helpers";
 
 //interface imports
-import { CategoryItem, Data } from "../interfaces/interface";
 
 //components
 import Intro from "../components/Intro";
@@ -17,65 +15,78 @@ import Intro from "../components/Intro";
 import { toast } from "react-toastify";
 
 //icon imports
-import { PlusIcon } from '@heroicons/react/24/solid'
-import CategoryListItem from "../components/CategoryListItem";
-import CategoryList from "../components/CategoryList";
+import Category from "../components/Category";
+import { User } from "../interfaces/interface";
 
 //Loader function
 export function dashboardLoader() {
-    const userName = fetchData("userName");
-    return { userName };
+    const user:User = fetchData("user");
+    return { user };
 }
 
 //action
 export async function dashboardAction({ request }: { request: Request }) {
 
-    const data = await request.formData();
-    const formData = Object.fromEntries(data);
+    await waaait();
 
-    try {
-        localStorage.setItem("userName", JSON.stringify(formData.userName));
-        return toast.success(`Welcome, ${formData.userName}`);
+    const data = await request.formData();
+    const {_action, ...values} = Object.fromEntries(data);
+
+    //new user submition
+    if(_action === "newUser") {
+
+        try {           
+            createUser({username:values.user.toString()});
+            return toast.success(`Welcome, ${values.user}`);
+        }
+        catch (err) {
+            throw new Error("Something went wrong creating your account!");
+        }
     }
-    catch (err) {
-        throw new Error("Something went wrong creating your account!");
+
+    //new category submit
+    if(_action === "createNewCategory") {
+        try {            
+            createCategory({
+                name:values.categoryName,  
+                listItems:[],
+                completed:false
+            });
+            return toast.success("Category Created!");            
+        }
+        catch(err) {
+            throw new Error("There was a problem creating your category");
+        }
     }
 }
 
 const Dashboard = () => {
 
     //get loader function data above
-    const { userName } = useLoaderData() as Data;
-    const [categoryItems, setCategoryItems] = useState<CategoryItem[]>([]);
+    const { user } = useLoaderData() as any;
 
-    useEffect(() => {
-        const storedCategories = localStorage.getItem("categories");
-        if (storedCategories) {
-            const parsedCategories = JSON.parse(storedCategories);
-            setCategoryItems(parsedCategories);
-        }
-    }, []);
+    //console.log(user);
 
     return (
         <div className="dashboard p-10">
 
+{
+    user ? <div className="px-6 py-10">
+                <h1 className="text-4xl">Welcome {user.name}!</h1>
+            </div> : null
+}
+            
+            
+
             <div className="px-6">
                 {
-                    userName ?
+                    user ?
                         <div>
                             <div className="flex justify-between items-center mb-10 w-full bg-pacific_blue shadow-lg p-6 text-white">
-                                <h1 className="text-3xl">Dashboard</h1>
-                                <p>{userName}</p>
+                                <h1 className="text-3xl">Dashboard</h1>                               
                             </div>
-                            <div className="px-10 text-center">
-
-                                {
-                                    categoryItems.length > 0 ?
-                                        <div>
-                                            <CategoryList list={categoryItems} />
-                                        </div> : <p>{userName} you currently have no categories</p>
-                                }
-
+                            <div className="px-10 text-center">                                
+                                  <Category name={user.name} id={user.id} listItems={user.categories} createdAt={0} />  
                             </div>
 
                         </div>
